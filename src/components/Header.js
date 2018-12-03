@@ -7,10 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from 'reactstrap'
 
 export default function Header({ home }) {
@@ -23,19 +20,45 @@ export default function Header({ home }) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">Начало</NavLink>
+              <NavLink tag={Link} to="/" onClick={() => toggleOpen(false)}>
+                Начало
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/doctors">Лекари</NavLink>
+              <NavLink
+                tag={Link}
+                onClick={() => toggleOpen(false)}
+                to="/doctors/"
+              >
+                Доктори
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/appointments">Моите часове</NavLink>
+              <NavLink
+                tag={Link}
+                onClick={() => toggleOpen(false)}
+                to="/appointments/"
+              >
+                Моите часове
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/make-appointment">Запазване на час</NavLink>
+              <NavLink
+                tag={Link}
+                onClick={() => toggleOpen(false)}
+                to="/make-appointment/"
+              >
+                Запазване на час
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/contact">Контакти</NavLink>
+              <NavLink
+                tag={Link}
+                onClick={() => toggleOpen(false)}
+                to="/contact/"
+              >
+                Контакти
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

@@ -1,14 +1,23 @@
 import React from 'react'
-import { Alert } from 'reactstrap'
-import { Button } from 'reactstrap'
+import AppointmentCard from '../components/AppointmentCard'
+import styled from 'styled-components'
+
+const Title = styled.h2`
+  background-color: #33afcb;
+  color: white;
+  font-size: 1.4rem
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 2rem;
+`
 
 export default function Appointments() {
   return (
     <>
-      <h1>Appointments</h1>
-      <Alert color="primary">This is a primary alert — check it out!</Alert>
-      <Button color="danger">Danger!</Button>
-      <Alert color="success">This is a success alert — check it out!</Alert>
+      <Title>Моите часове</Title>
+      <AppointmentCard />
+      <AppointmentCard />
+      <AppointmentCard />
     </>
   )
 }

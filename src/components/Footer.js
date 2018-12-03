@@ -41,13 +41,6 @@ const Nav = styled.nav`
   background-color: transparent;
 `
 
-const FooterNote = styled.div`
-  padding-top: 0.5rem;
-  font-size: 1.2rem;
-  width: 100%;
-  margin: 0 auto;
-`
-
 export default function Footer({ home }) {
   return (
     <Nav>
