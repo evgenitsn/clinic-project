@@ -1,13 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ScrollToTop from './utils/ScrollToTop'
-// import Footer from './components/Footer'
+import Footer from './components/Footer'
+import Header from './components/Header'
 import {
   Home,
-  Restaurants,
-  MyReservations,
-  Favorites,
-  Restaurant
+  Doctors,
+  Appointments,
+  MakeAppointment,
+  Contacts
 } from './screens'
 
 export default function Routes() {
@@ -15,12 +16,13 @@ export default function Routes() {
     <Router>
       <div>
         <ScrollToTop>
+          <Header />
           <Route path="/" exact component={Home} />
-          {/* <Route path="/restaurants/" component={Restaurants} />
-          <Route path="/my-reservations/" component={MyReservations} />
-          <Route path="/favorites/" component={Favorites} />
-          <Route path="/restaurant/:id" component={Restaurant} /> */}
-          {/* <Footer /> */}
+          <Route path="/doctors/" component={Doctors} />
+          <Route path="/appointments/" component={Appointments} />
+          <Route path="/make-appointment/" component={MakeAppointment} />
+          <Route path="/contact/" component={Contacts} />
+          <Footer />
         </ScrollToTop>
       </div>
     </Router>
