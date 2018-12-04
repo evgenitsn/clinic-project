@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Button } from 'reactstrap'
 
 import heroImg from '../images/hero.png'
+import reviewPhoto from '../images/reviewer.png'
+import quote from '../images/quote.png'
 
 const CTAButton = styled.button`
   font-weight: bold;
@@ -31,6 +34,22 @@ const LandingDiv = styled.div`
   min-height: 60vh;
 `
 
+const Title = styled.h2`
+  background-color: #33afcb;
+  color: white;
+  font-size: 1.4rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 2rem;
+`
+
+const HomeText = styled.div`
+  margin: 0.5rem 3rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  font-size: 0.9rem;
+`
+
 export default function Home() {
   return (
     <>
@@ -39,7 +58,61 @@ export default function Home() {
           <CTAButton>ЗАПАЗВАНЕ НА ЧАС</CTAButton>
         </Link>
       </LandingDiv>
-      <h1>НЕ Е ГОТОВО!</h1>
+      <div
+        style={{
+          marginTop: '2rem',
+          marginBottom: '1rem',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <img
+          style={{ maxWidth: 60, marginRight: '20px' }}
+          src={reviewPhoto}
+          alt="review"
+        />
+        <p
+          style={{
+            padding: 0,
+            margin: 0,
+            fontSize: '1.6rem',
+            fontWeight: '700'
+          }}
+        >
+          Мария Иванова
+        </p>
+      </div>
+
+      <img
+        style={{ maxWidth: 30, marginRight: '20px' }}
+        src={quote}
+        alt="review"
+      />
+      <HomeText>
+        Миналата година подмених старите си коронки с циркониеви и проведох
+        цялостно лечение на зъбите си в изнесения кабинет на Дентапрайм в Гранд
+        мол по прецизно изработен индивидуален план. Изключително съм доволна от
+        постигнатия резултат, от високия професионализъм на целия лекуващ ме
+        екип начело с д-р Герчева и от цялостното мед.обслужване, за което им
+        благодаря.
+      </HomeText>
+      <Title>Лекари</Title>
+      <HomeText>
+        Лекарският екип на „Медикал лайф“ предлага диагностика и извънболнично
+        лечение на заболявания в 18 специалности: Акушерство и гинекология,
+        Вътрешни болести, Гастроентерология, Стоматология, Детска нефрология,
+        Детски болести, Ендокринология и болести на обмяната, Кардиология, Кожни
+        и венерически болести, Неврология, Нефрология, Ортопедия и
+        травматология, Очни болести, УНГ, Урология, Хирургия, Съдова хирургия,
+        Физиотерапия и рехабилитация. Информация за лекарите и приемно време в
+        „Медикал Лайф“ е публикувана в сайта на медицинския център{' '}
+      </HomeText>
+      <Link to="/doctors/">
+        <Button style={{ width: '50%' }} color="primary">
+          ДОКТОРИ
+        </Button>
+      </Link>
     </>
   )
 }

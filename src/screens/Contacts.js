@@ -4,14 +4,14 @@ import styled from 'styled-components'
 const Title = styled.h2`
   background-color: #33afcb;
   color: white;
-  font-size: 1.4rem
+  font-size: 1.4rem;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   margin-bottom: 2rem;
 `
 
 const Label = styled.p`
-  text-decoration: underline;
+  font-weight: 700;
   padding-bottom: 0;
   margin-bottom: 0.4rem;
 `
