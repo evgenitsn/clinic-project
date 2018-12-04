@@ -45,3 +45,44 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.box {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #ced4da;
+  padding: 0.2rem 3.4rem;
+}
+
+.box span {
+  font-size: 1rem;
+  user-select: none;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+input[type='radio']:checked + .box {
+  color: white;
+  background-color: #33afcb;
+}
+
+input[type='radio']:checked + .box span {
+  color: white;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  width: 87%;
+}
+
+.react-datepicker__time-container {
+  width: 80px;
+}
+
+.react-datepicker__time-list {
+  font-size: 0.7rem;
+}

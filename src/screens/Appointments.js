@@ -5,13 +5,15 @@ import styled from 'styled-components'
 const Title = styled.h2`
   background-color: #33afcb;
   color: white;
-  font-size: 1.4rem
+  font-size: 1.4rem;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   margin-bottom: 2rem;
 `
 
 export default function Appointments() {
+  let appointments = JSON.parse(localStorage.getItem('appointments')) || []
+  console.log(appointments)
   return (
     <>
       <Title>Моите часове</Title>
