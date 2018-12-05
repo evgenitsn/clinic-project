@@ -49,7 +49,7 @@ export default function Footer({ home }) {
           <StyledLink to="/">Начало</StyledLink>
         </Li>
         <Li>
-          <StyledLink to="/doctors/">Лекари</StyledLink>
+          <StyledLink to="/doctors/">Доктори</StyledLink>
         </Li>
         <Li>
           <StyledLink to="/contacts/">Контакти</StyledLink>
