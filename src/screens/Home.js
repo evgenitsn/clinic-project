@@ -30,10 +30,14 @@ const CTAButton = styled.button`
 
 const LandingDiv = styled.div`
   background-image: url(${heroImg});
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   min-height: 60vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+
+  @media (max-width: 500px) {
+    background-attachment: scroll;
+  }
 `
 
 const Title = styled.h2`
@@ -62,16 +66,8 @@ export default function Home() {
       </LandingDiv>
 
       <Carousel
-        renderCenterLeftControls={({ previousSlide }) => (
-          <button onClick={previousSlide} style={{ fontSize: '1.8rem' }}>
-            ◀️
-          </button>
-        )}
-        renderCenterRightControls={({ nextSlide }) => (
-          <button onClick={nextSlide} style={{ fontSize: '1.8rem' }}>
-            ▶️
-          </button>
-        )}
+        renderCenterLeftControls={({ previousSlide }) => null}
+        renderCenterRightControls={({ nextSlide }) => null}
         wrapAround
         autoplay
         style={{ margin: '0.5rem', padding: '2rem' }}

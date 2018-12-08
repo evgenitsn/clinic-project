@@ -6,6 +6,7 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import metadata from '../doctors'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -50,7 +51,11 @@ function addToLocalStorage(item) {
 
 export default function MakeAppointment(props) {
   function handleSubmit(values) {
-    console.log(values)
+    metadata.map(doc => {
+      if (values.doctor.includes(doc.name)) {
+        values.meta = doc
+      }
+    })
     addToLocalStorage({ ...values })
     props.history.push('/appointments')
   }
@@ -188,23 +193,23 @@ export default function MakeAppointment(props) {
                     <option value="" label="Доктор *">
                       Доктор *
                     </option>
-                    <option value="Д-р Иван Томов - невролог">
-                      Д-р Иван Томов - невролог
+                    <option value="д-р Иван Томов - невролог">
+                      д-р Иван Томов - невролог
                     </option>
-                    <option value="Д-р Станислав Тодоров - невролог">
-                      Д-р Станислав Тодоров - невролог
+                    <option value="д-р Станислав Тодоров - невролог">
+                      д-р Станислав Тодоров - невролог
                     </option>
-                    <option value="Д-р Mилен Ганев - ортопед">
-                      Д-р Mилен Ганев - ортопед
+                    <option value="д-р Милен Ганев - ортопед">
+                      д-р Милен Ганев - ортопед
                     </option>
-                    <option value="Д-р Росен Иванов - ортопед">
-                      Д-р Росен Иванов - ортопед
+                    <option value="д-р Анелия Иванова - ортопед">
+                      д-р Анелия Иванова - ортопед
                     </option>
-                    <option value="Д-р Росица Гарчева - стоматолог">
-                      Д-р Росица Гарчева - стоматолог
+                    <option value="д-р Росица Гарчева - стоматолог">
+                      д-р Росица Гарчева - стоматолог
                     </option>
-                    <option value="Д-р Росен Ганев - стоматолог">
-                      Д-р Росен Ганев - стоматолог
+                    <option value="д-р Данчо Дончев - стоматолог">
+                      д-р Данчо Дончев - стоматолог
                     </option>
                   </Input>
                 </FormGroup>

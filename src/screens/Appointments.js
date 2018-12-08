@@ -13,13 +13,12 @@ const Title = styled.h2`
 
 export default function Appointments() {
   let appointments = JSON.parse(localStorage.getItem('appointments')) || []
-  console.log(appointments)
   return (
     <>
       <Title>Моите часове</Title>
-      <AppointmentCard />
-      <AppointmentCard />
-      <AppointmentCard />
+      {appointments.map(appt => {
+        return <AppointmentCard />
+      })}
     </>
   )
 }
