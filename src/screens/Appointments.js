@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppointmentCard from '../components/AppointmentCard'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Title = styled.h2`
   background-color: #33afcb;
@@ -12,12 +13,40 @@ const Title = styled.h2`
 `
 
 export default function Appointments() {
-  let appointments = JSON.parse(localStorage.getItem('appointments')) || []
+  function readFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key)) || []
+  }
+
+  const [appointments, setAppointments] = useState(
+    readFromLocalStorage('appointments')
+  )
+
   return (
     <>
       <Title>Моите часове</Title>
+      {appointments.length === 0 && (
+        <div>
+          <h4 style={{ margin: '2rem' }}>Нямате запазени часове</h4>
+          <Link
+            to="/make-appointment/"
+            style={{
+              padding: '1rem',
+              borderRadius: 4,
+              border: '1px solid #206D7E'
+            }}
+          >
+            Запишете час
+          </Link>
+        </div>
+      )}
       {appointments.map(appt => {
-        return <AppointmentCard />
+        return (
+          <AppointmentCard
+            key={appt.id}
+            data={appt}
+            setAppointments={setAppointments}
+          />
+        )
       })}
     </>
   )

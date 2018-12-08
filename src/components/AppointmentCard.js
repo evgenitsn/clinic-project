@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
-import mockImg from '../images/doctors/img-circle2.png'
+import moment from 'moment'
+import 'moment/locale/bg' // without this line it didn't work
+moment.locale('bg')
 
 const Button = styled.button`
   background: transparent;
@@ -21,16 +21,22 @@ const Button = styled.button`
   }
 `
 
-export default function AppointmentCard({
-  patientName,
-  doctorName,
-  speciality,
-  date,
-  time,
-  cabinet,
-  telephone,
-  image
-}) {
+export default function AppointmentCard({ data, setAppointments }) {
+  function readFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key)) || []
+  }
+
+  function updateToLocalStorage(key, update) {
+    localStorage.setItem(key, JSON.stringify(update))
+  }
+
+  function removeEntry(id) {
+    let current = readFromLocalStorage('appointments')
+    let update = current.filter(f => f.id !== id)
+    updateToLocalStorage('appointments', update)
+    setAppointments(update)
+  }
+
   return (
     <div>
       <div
@@ -42,7 +48,9 @@ export default function AppointmentCard({
           borderRadius: 4
         }}
       >
-        <h4 style={{ fontWeight: 700, marginBottom: '1rem' }}>Йордан Иванов</h4>
+        <h4 style={{ fontWeight: 700, marginBottom: '1rem' }}>
+          {data.fullName}
+        </h4>
         <div
           style={{
             display: 'flex',
@@ -53,13 +61,25 @@ export default function AppointmentCard({
           <div>
             <p
               style={{
+                textAlign: 'left',
                 padding: 0,
                 margin: 0,
                 fontWeight: 700,
                 fontSize: '1.5rem'
               }}
             >
-              18 Декември
+              {moment(data.date).format('DD MMMM')}
+            </p>
+            <p
+              style={{
+                textAlign: 'left',
+                padding: 0,
+                margin: 0,
+                fontWeight: 700,
+                fontSize: '1.5rem'
+              }}
+            >
+              {moment(data.time).format('kk:mm')}ч.
             </p>
             <p
               style={{
@@ -70,31 +90,35 @@ export default function AppointmentCard({
                 textAlign: 'left'
               }}
             >
-              Зъболекар
+              {data.meta.speciality}
             </p>
             <ul>
               <li>
                 <p style={{ padding: 0, margin: 0, textAlign: 'left' }}>
-                  д-р Иванов
+                  {data.meta.name}
                 </p>
               </li>
               <li>
                 <p style={{ padding: 0, margin: 0, textAlign: 'left' }}>
-                  кабинет 402
+                  кабинет {data.meta.cabinet}
                 </p>
               </li>
               <li>
                 <p style={{ padding: 0, margin: 0, textAlign: 'left' }}>
-                  0878523694
+                  {data.meta.telephone}
                 </p>
               </li>
             </ul>
           </div>
           <div>
-            <img style={{ maxWidth: 100 }} src={mockImg} alt="Doctor" />
+            <img
+              style={{ maxWidth: 100, maxHeight: 100, borderRadius: '100%' }}
+              src={data.meta.photo}
+              alt="Doctor"
+            />
           </div>
         </div>
-        <Button>Откажи</Button>
+        <Button onClick={() => removeEntry(data.id)}>Откажи</Button>
       </div>
     </div>
   )

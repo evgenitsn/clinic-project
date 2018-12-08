@@ -34,6 +34,27 @@ const Title = styled.h2`
 const Container = styled.div`
   margin: 0 2rem;
 `
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1)
+  }
+  return (
+    s4() +
+    s4() +
+    '-' +
+    s4() +
+    '-' +
+    s4() +
+    '-' +
+    s4() +
+    '-' +
+    s4() +
+    s4() +
+    s4()
+  )
+}
 
 function readFromLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key)) || []
@@ -56,6 +77,7 @@ export default function MakeAppointment(props) {
         values.meta = doc
       }
     })
+    values.id = guid()
     addToLocalStorage({ ...values })
     props.history.push('/appointments')
   }
